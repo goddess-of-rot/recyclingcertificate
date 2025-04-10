@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate of Recycling</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <style>
+    @page { size: A2 landscape; margin: 0; }
+    html, body {
+      margin: 0; padding: 0;
+      background: #fff;
+      font-family: Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+    }
+    .page {
+      position: relative;
+      width: 594mm;
+      height: 420mm;
+      padding: 24mm;
+      box-sizing: border-box;
+      border: 12px solid #666;
+      outline: 4px dashed #999;
+      outline-offset: -16px;
+    }
+    .header {
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px; position: relative;
+    }
+    .title-box {
+      border: 2px solid #333; padding: 8px;
+      font-size: 48px; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .rn-box {
+      position: absolute; right: 0; top: 0;
+      border: 2px solid #333; padding: 8px;
+      font-size: 18px; white-space: nowrap;
+    }
+    .sub-row {
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; position: relative;
+    }
+    .subtitle-box {
+      border: 2px solid #333; padding: 6px;
+      font-size: 16px; white-space: nowrap;
+    }
+    .ref-label {
+      position: absolute; left: 0;
+      font-size: 18px; font-weight: bold;
+      white-space: nowrap;
+    }
+    .received { font-size: 16px; }
+    .received .row { display: flex; margin-bottom: 8px; }
+    .received .label {
+      width: 20%; font-weight: bold;
+      white-space: nowrap; align-self: center;
+    }
+    .received .value {
+      width: 78%; border: 2px solid #333;
+      padding: 12px; line-height: 1.4;
+    }
+    .summary-heading {
+      text-align: center; font-size: 18px;
+      text-decoration: underline;
+      margin: 20px 0 12px;
+    }
+    .charts {
+      display: flex; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .chart-box {
+      width: 32%; text-align: center; font-size: 16px;
+    }
+    .chart-box canvas {
+      width: 360px !important; height: 360px !important;
+    }
+    .chart-box .title {
+      margin-top: 6px; line-height: 1.2;
+    }
+    .weee {
+      font-size: 16px; line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .bottom-row {
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 16px;
+      margin-top: 16px;
+    }
+    .sign-block {
+      text-align: center; width: 30%;
+    }
+    .signature-img, .stamp-img {
+      width: 140px; height: auto; object-fit: contain;
+      margin-bottom: 8px;
+    }
+    .logos {
+      display: flex; gap: 24px; align-items: center;
+    }
+    .footer {
+      position: absolute; bottom: 24mm;
+      left: 24mm; right: 24mm;
+      text-align: center; font-size: 14px;
+      border-top: 2px solid #666; padding-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="title-box">Certificate of Recycling</div>
+      <div class="rn-box">R/N: EQ0624KL040MF6040</div>
+    </div>
+    <div class="sub-row">
+      <div class="ref-label">Ref/No: EQ0624KL040MF6040</div>
+      <div class="subtitle-box">
+        This is to certify that the E‑Waste received was recycled environment‑friendly as mentioned below:
+      </div>
+    </div>
+    <div class="received">
+      <div class="row">
+        <div class="label">Received From : </div>
+        <div class="value">Deloitte Shared Services India LLP</div>
+      </div>
+      <div class="row">
+        <div class="label">Receiving Location : </div>
+        <div class="value">
+          9th Floor, Prestige TMS Square, NH66, Opp. Oberon Mall,<br>
+          Edappally, Kochi 682024
+        </div>
+      </div>
+      <div class="row">
+        <div class="label">Received During : </div>
+        <div class="value">
+          from <strong>03‑06‑2024</strong> to <strong>03‑06‑2024</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label">Received Weight/Qty : </div>
+        <div class="value">
+          <strong>kg</strong> 32.5   <strong>Qty.</strong> 13  
+          <strong>Status:</strong> Destruction process completed successfully
+        </div>
+      </div>
+      <div class="row">
+        <div class="label">Procedure Method : </div>
+        <div class="value">
+          ☑ Data Sanitization   ☑ Product Shred   ☑ Dismantling   ☑ Recycling   ☑ Refurbished
+        </div>
+      </div>
+    </div>
+    <div class="summary-heading">
+      E‑Waste Recycling &amp; Data Sanitization Summary
+    </div>
+    <div class="charts">
+      <div class="chart-box">
+        <canvas id="chartProject"></canvas>
+        <div class="title">
+          During this Project:<br><strong>1.195 MT E‑WASTE</strong>
+        </div>
+      </div>
+      <div class="chart-box">
+        <canvas id="chartFY"></canvas>
+        <div class="title">
+          During this F.Y.:<br><strong>89.251 MT E‑WASTE</strong>
+        </div>
+      </div>
+      <div class="chart-box">
+        <canvas id="chartTotal"></canvas>
+        <div class="title">
+          Total Recycled As on Date:<br><strong>140.296 MT E‑WASTE</strong>
+        </div>
+      </div>
+    </div>
+    <div class="weee">
+      The above‑mentioned WEEE has been received by Binbay Recycling Pvt. Ltd. and is recycled for maximum material recovery 
+      and the Storage media has been sanitized according to the industry standards, local regulations and Pollution Control Board norms. 
+      Binbay Recycling certifies that the processing of above material at our facility has not caused harm to health or the environment. 
+      This certificate is for information and records only.
+    </div>
+    <div class="bottom-row">
+      <div class="sign-block">
+        <img src="SIGN.png" alt="Signature" class="signature-img">
+        <div>
+          Prepared and Signed by<br>
+          <strong>Mr. Llewellyn D’Souza</strong><br>
+          Employee ID: EC23007
+        </div>
+      </div>
+      <div class="logos">
+        <img src="EPR.png" alt="EPR Logo" height="80">
+        <img src="LiFE.png" alt="LiFE Logo" height="80">
+      </div>
+      <div class="sign-block">
+        <img src="STAMP.png" alt="Authorized Stamp" class="stamp-img">
+        <div>Authorized Stamp / Seal</div>
+      </div>
+    </div>
+    <div class="footer">
+      Binbay Recycling Pvt. Ltd. | 310, Sangeet Plaza, Marol Maroshi Road, Andheri (E), Mumbai – 400059 | 
+      CIN: U37100MH2016PTC288322 | Reg. No: 80/MPCB/RHQ/HT/CE/B-19040038 | Mob: +91‑98190‑19091 | www.binbay.com
+    </div>
+  </div>
+  <script>
+    const centerTextPlugin = {
+      id: 'centerText',
+      afterDraw(chart, args, options) {
+        const { ctx, chartArea: { top, left, width, height } } = chart;
+        ctx.save();
+        ctx.font = options.font || 'bold 16px Arial';
+        ctx.fillStyle = options.color || '#333';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(options.text, left + width/2, top + height/2);
+      }
+    };
+
+    const baseOptions = {
+      responsive: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true },
+        datalabels: {
+          color: '#000',
+          font: { weight: 'bold', size: 10 },
+          formatter: (value, ctx) => {
+            const label = ctx.chart.data.labels[ctx.dataIndex];
+            return `${label}\n${value} MT`;
+          },
+          anchor: 'end', align: 'start', offset: 40, clamp: false,
+          backgroundColor: '#fff', borderColor: '#000',
+          borderWidth: 1, borderRadius: 4, padding: 3
+        }
+      },
+      cutout: '65%'
+    };
+
+    const allLabels = ['(ITEW)','(LSEEW)','(TLSEW)','(LIW)','(DSSBLEW)','(MDW)','(EETW)','(CEEW)'];
+    const allColors = ['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40','#66FF66','#FF6666'];
+
+    function filterNonZero(labels, colors, values) {
+      const filtered = values.map((v, i) => ({ label: labels[i], color: colors[i], value: v }))
+                             .filter(item => item.value !== 0);
+      return {
+        labels: filtered.map(f => f.label),
+        colors: filtered.map(f => f.color),
+        values: filtered.map(f => f.value)
+      };
+    }
+
+    const projectData = filterNonZero(allLabels, allColors, [0.0325, 0.1660, 0.1660, 0.1660, 0.1660, 0.1660, 0.1660, 0.1660]);
+    const fyData = filterNonZero(allLabels, allColors, [11.5151,0.8940,0.0000,6.1188,0.0000,0.0000,12.9220,57.8016]);
+    const totalData = filterNonZero(allLabels, allColors, [21.5951,1.4740,0.0000,9.8238,0.0000,0.0000,18.6360,88.7673]);
+
+    new Chart(document.getElementById('chartProject'), {
+      type: 'doughnut',
+      data: {
+        labels: projectData.labels,
+        datasets: [{ data: projectData.values, backgroundColor: projectData.colors, borderWidth: 1 }]
+      },
+      options: {
+        ...baseOptions,
+        plugins: { ...baseOptions.plugins, centerText: { text: '1.195 MT E‑WASTE', font: 'bold 16px Arial', color: '#333' } }
+      },
+      plugins: [centerTextPlugin, ChartDataLabels]
+    });
+
+    new Chart(document.getElementById('chartFY'), {
+      type: 'doughnut',
+      data: {
+        labels: fyData.labels,
+        datasets: [{ data: fyData.values, backgroundColor: fyData.colors, borderWidth: 1 }]
+      },
+      options: {
+        ...baseOptions,
+        plugins: { ...baseOptions.plugins, centerText: { text: '89.251 MT E‑WASTE', font: 'bold 16px Arial', color: '#333' } }
+      },
+      plugins: [centerTextPlugin, ChartDataLabels]
+    });
+
+    new Chart(document.getElementById('chartTotal'), {
+      type: 'doughnut',
+      data: {
+        labels: totalData.labels,
+        datasets: [{ data: totalData.values, backgroundColor: totalData.colors, borderWidth: 1 }]
+      },
+      options: {
+        ...baseOptions,
+        plugins: { ...baseOptions.plugins, centerText: { text: '140.296 MT E‑WASTE', font: 'bold 16px Arial', color: '#333' } }
+      },
+      plugins: [centerTextPlugin, ChartDataLabels]
+    });
+  </script>
+</body>
+</html>
