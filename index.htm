@@ -1,108 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Certificate of Recycling</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
   <style>
-    @page { size: A2 landscape; margin: 0; }
+    @page {
+      size: A4 potrait;
+      margin: 10mm;
+    }
+
     html, body {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       background: #fff;
       font-family: Arial, sans-serif;
       -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
+
     .page {
-      position: relative;
-      width: 594mm;
-      height: 420mm;
-      padding: 24mm;
-      box-sizing: border-box;  
-      border: 36px solid #2e7d32;
-      box-shadow: inset 0 0 0 8px #a5d6a7, inset 0 0 0 16px #c8e6c9;
+      width: 100%;
+      max-width: 277mm;
+      margin: auto;
+      padding: 30mm 20mm;
+      background-image: url('BORDER.jpg');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      box-sizing: border-box;
     }
 
     .header {
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 12px; position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      position: relative;
     }
+
     .title-box {
-      border: 2px solid #333; padding: 8px;
-      font-size: 48px; text-transform: uppercase;
-      white-space: nowrap;
+      border: 2px solid #333;
+      padding: 4px 12px;
+      font-size: 28px;
+      text-transform: uppercase;
     }
+
     .rn-box {
-      position: absolute; right: 0; top: 0;
-      border: 2px solid #333; padding: 8px;
-      font-size: 18px; white-space: nowrap;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: 2px solid #333;
+      padding: 4px 8px;
+      font-size: 12px;
     }
+
     .sub-row {
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px; position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      position: relative;
     }
+
     .subtitle-box {
-      border: 2px solid #333; padding: 6px;
-      font-size: 16px; white-space: nowrap;
+      border: 2px solid #333;
+      padding: 4px 10px;
+      font-size: 14px;
+      text-align: center;
     }
+
     .ref-label {
-      position: absolute; left: 0;
-      font-size: 18px; font-weight: bold;
-      white-space: nowrap;
+      position: absolute;
+      left: 0;
+      font-size: 12px;
+      font-weight: bold;
     }
-    .received { font-size: 16px; }
-    .received .row { display: flex; margin-bottom: 8px; }
-    .received .label {
-      width: 20%; font-weight: bold;
-      white-space: nowrap; align-self: center;
+
+    .received {
+      font-size: 12px;
+      align-items: end;
     }
-    .received .value {
-      width: 78%; border: 2px solid #333;
-      padding: 12px; line-height: 1.4;
-    }
-    .summary-heading {
-      text-align: center; font-size: 18px;
-      text-decoration: underline;
-      margin: 20px 0 12px;
-    }
-    .charts {
-      display: flex; justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .chart-box {
-      width: 32%; text-align: center; font-size: 16px;
-    }
-    .chart-box canvas {
-      width: 360px !important; height: 360px !important;
-    }
-    .chart-box .title {
-      margin-top: 6px; line-height: 1.2;
-    }
-    .weee {
-      font-size: 16px; line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .bottom-row {
-      display: flex; justify-content: space-between;
-      align-items: center; font-size: 16px;
-      margin-top: 16px;
-    }
-    .sign-block {
-      text-align: center; width: 30%;
-    }
-    .signature-img, .stamp-img {
-      width: 140px; height: auto; object-fit: contain;
+
+    .received .row {
+      display: flex;
       margin-bottom: 8px;
+      align-items: center;
     }
-    .logos {
-      display: flex; gap: 24px; align-items: center;
+
+    .received .label {
+      width: 180px;
+      font-weight: bold;
+      font-size: 12px;
+      white-space: nowrap;
+      margin-right: 6px;
     }
+
+    .received .value {
+      display: inline-flex;
+      margin-left: auto;
+      justify-content: flex-end;
+      gap: 6px;
+      font-size: 12px;
+      padding: 3px 6px;
+      border: 1px solid #333;
+      min-height: 24px;
+    }
+
+    .summary-heading {
+      text-align: center;
+      font-size: 14px;
+      text-decoration: underline;
+      margin: 12px 0;
+    }
+
+    .charts {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+
+    .chart-box {
+      width: 32%;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .chart-box canvas {
+      width: 160px !important;
+      height: 160px !important;
+    }
+
+    .chart-box .title {
+      margin-top: 4px;
+      line-height: 1.2;
+    }
+
+    .weee {
+      font-size: 12px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .bottom-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
     .footer {
-      position: absolute; bottom: 24mm;
-      left: 24mm; right: 24mm;
-      text-align: center; font-size: 14px;
-      border-top: 2px solid #666; padding-top: 6px;
+      text-align: center;
+      font-size: 10px;
+      border-top: 1px solid #666;
+      padding-top: 6px;
+      margin-top: 10px;
+    }
+
+    .bottom-row img {
+      height: 60px;
+    }
+
+    .stamp-img {
+      height: 70px;
+    }
+
+    .sign-img {
+      height: 50px;
+    }
+
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: #fff !important;
+      }
+
+      .page {
+        page-break-after: avoid;
+        background-size: 100% 100% !important;
+      }
+
+      canvas {
+        break-inside: avoid;
+      }
+
+      .charts {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+      }
+
+      .chart-box canvas {
+        width: 160px !important;
+        height: 160px !important;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
     }
   </style>
 </head>
@@ -112,96 +213,86 @@
       <div class="title-box">Certificate of Recycling</div>
       <div class="rn-box">R/N: EQ0624KL040MF6040</div>
     </div>
+
     <div class="sub-row">
-      <div class="ref-label">Ref/No: EQ0624KL040MF6040</div>
+      <div class="ref-label" style="top: -15px;">Ref/No: EQ0624KL040MF6040</div>
       <div class="subtitle-box">
         This is to certify that the E‑Waste received was recycled environment‑friendly as mentioned below:
       </div>
     </div>
+
     <div class="received">
       <div class="row">
-        <div class="label">Received From : </div>
+        <div class="label">Received From :</div>
         <div class="value">Deloitte Shared Services India LLP</div>
       </div>
       <div class="row">
-        <div class="label">Receiving Location : </div>
+        <div class="label">Receiving Location :</div>
         <div class="value">
           9th Floor, Prestige TMS Square, NH66, Opp. Oberon Mall,<br>
           Edappally, Kochi 682024
         </div>
       </div>
       <div class="row">
-        <div class="label">Received During : </div>
-        <div class="value">
-          from <strong>03‑06‑2024</strong> to <strong>03‑06‑2024</strong>
-        </div>
+        <div class="label">Received During :</div>
+        <div class="value">from <strong>03‑06‑2024</strong> to <strong>03‑06‑2024</strong></div>
       </div>
       <div class="row">
-        <div class="label">Received Weight/Qty : </div>
-        <div class="value">
-          <strong>kg</strong> 32.5   <strong>Qty.</strong> 13  
-          <strong>Status:</strong> Destruction process completed successfully
-        </div>
+        <div class="label">Received Weight/Qty :</div>
+        <div class="value"><strong>kg</strong> 32.5   <strong>Qty.</strong> 13   <strong>Status:</strong> Destruction process completed successfully</div>
       </div>
       <div class="row">
-        <div class="label">Procedure Method : </div>
-        <div class="value">
-          ☑ Data Sanitization   ☑ Product Shred   ☑ Dismantling   ☑ Recycling   ☑ Refurbished
-        </div>
+        <div class="label">Procedure Method :</div>
+        <div class="value">☒ Data Sanitization   ☑ Product Shred   ☑ Dismantling   ☑ Recycling   ☒ Refurbished</div>
       </div>
     </div>
-    <div class="summary-heading">
-      E‑Waste Recycling &amp; Data Sanitization Summary
-    </div>
+
+    <div class="summary-heading">E‑Waste Recycling &amp; Data Sanitization Summary</div>
+
     <div class="charts">
       <div class="chart-box">
         <canvas id="chartProject"></canvas>
-        <div class="title">
-          During this Project:<br><strong>1.195 MT E‑WASTE</strong>
-        </div>
+        <div class="title">During this Project:<br><strong>1.195 MT E‑WASTE</strong></div>
       </div>
       <div class="chart-box">
         <canvas id="chartFY"></canvas>
-        <div class="title">
-          During this F.Y.:<br><strong>89.251 MT E‑WASTE</strong>
-        </div>
+        <div class="title">During this F.Y.:<br><strong>89.251 MT E‑WASTE</strong></div>
       </div>
       <div class="chart-box">
         <canvas id="chartTotal"></canvas>
-        <div class="title">
-          Total Recycled As on Date:<br><strong>140.296 MT E‑WASTE</strong>
-        </div>
+        <div class="title">Total Recycled As on Date:<br><strong>140.296 MT E‑WASTE</strong></div>
       </div>
     </div>
+
     <div class="weee">
       The above‑mentioned WEEE has been received by Binbay Recycling Pvt. Ltd. and is recycled for maximum material recovery 
       and the Storage media has been sanitized according to the industry standards, local regulations and Pollution Control Board norms. 
       Binbay Recycling certifies that the processing of above material at our facility has not caused harm to health or the environment. 
       This certificate is for information and records only.
     </div>
+
     <div class="bottom-row">
-      <div class="sign-block">
-        <img src="SIGN.png" alt="Signature" class="signature-img">
-        <div>
-          Prepared and Signed by<br>
-          <strong>Mr. Llewellyn D’Souza</strong><br>
-          Employee ID: EC23007
-        </div>
+      <img src="EPR.png" alt="EPR Logo">
+      <img src="LiFE.png" alt="LiFE Logo">
+      <img src="BARCODE.png" alt="Barcode">
+      <div style="text-align: center;">
+        <img src="STAMP.png" class="stamp-img" alt="Stamp"><br>
+        Authorized Stamp / Seal
       </div>
-      <div class="logos">
-        <img src="EPR.png" alt="EPR Logo" height="80">
-        <img src="LiFE.png" alt="LiFE Logo" height="80">
-      </div>
-      <div class="sign-block">
-        <img src="STAMP.png" alt="Authorized Stamp" class="stamp-img">
-        <div>Authorized Stamp / Seal</div>
+      <div style="text-align: center;">
+        <img src="SIGN.png" class="sign-img" alt="Signature"><br>
+        Prepared and Signed by<br>
+        <strong>Mr. Llewellyn D’Souza</strong><br>
+        Employee ID: EC23007
       </div>
     </div>
+
     <div class="footer">
       Binbay Recycling Pvt. Ltd. | 310, Sangeet Plaza, Marol Maroshi Road, Andheri (E), Mumbai – 400059 | 
       CIN: U37100MH2016PTC288322 | Reg. No: 80/MPCB/RHQ/HT/CE/B-19040038 | Mob: +91‑98190‑19091 | www.binbay.com
     </div>
   </div>
+
   <script>
     const centerTextPlugin = {
       id: 'centerText',
@@ -212,7 +303,7 @@
         ctx.fillStyle = options.color || '#333';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(options.text, left + width/2, top + height/2);
+        ctx.fillText(options.text, left + width / 2, top + height / 2);
       }
     };
 
@@ -261,9 +352,9 @@
       },
       options: {
         ...baseOptions,
-        plugins: { ...baseOptions.plugins, centerText: { text: '1.195 MT E‑WASTE', font: 'bold 16px Arial', color: '#333' } }
+        plugins: { ...baseOptions.plugins, centerText: { text: '1.195 MT E‑WASTE', font: 'bold 11px Arial', color: '#333' } }
       },
-      plugins: [centerTextPlugin, ChartDataLabels]
+      plugins: [centerTextPlugin]
     });
 
     new Chart(document.getElementById('chartFY'), {
@@ -274,9 +365,9 @@
       },
       options: {
         ...baseOptions,
-        plugins: { ...baseOptions.plugins, centerText: { text: '89.251 MT E‑WASTE', font: 'bold 16px Arial', color: '#333' } }
+        plugins: { ...baseOptions.plugins, centerText: { text: '89.251 MT E‑WASTE', font: 'bold 11px Arial', color: '#333' } }
       },
-      plugins: [centerTextPlugin, ChartDataLabels]
+      plugins: [centerTextPlugin]
     });
 
     new Chart(document.getElementById('chartTotal'), {
@@ -287,9 +378,9 @@
       },
       options: {
         ...baseOptions,
-        plugins: { ...baseOptions.plugins, centerText: { text: '140.296 MT E‑WASTE', font: 'bold 16px Arial', color: '#333' } }
+        plugins: { ...baseOptions.plugins, centerText: { text: '140.296 MT E‑WASTE', font: 'bold 10px Arial', color: '#333' } }
       },
-      plugins: [centerTextPlugin, ChartDataLabels]
+      plugins: [centerTextPlugin]
     });
   </script>
 </body>
