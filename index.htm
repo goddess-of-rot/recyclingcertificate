@@ -109,8 +109,13 @@
       gap: 6px;
       font-size: 12px;
       padding: 3px 6px;
-      border: 1px solid #333;
       min-height: 24px;
+    }
+
+    .outlined {
+      border: 1px solid #333;
+      padding: 3px 6px;
+      display: inline-block;
     }
 
     .summary-heading {
@@ -227,27 +232,39 @@
 
     <div class="received">
       <div class="row">
-        <div class="label">Received From :</div>
-        <div class="value">Deloitte Shared Services India LLP</div>
-      </div>
-      <div class="row">
-        <div class="label">Receiving Location :</div>
+        <div class="label">Received From<strong>​:</strong>​</div>
         <div class="value">
-          9th Floor, Prestige TMS Square, NH66, Opp. Oberon Mall,<br>
-          Edappally, Kochi 682024
+          <span class="outlined">Deloitte Shared Services India LLP</span>
         </div>
       </div>
       <div class="row">
-        <div class="label">Received During :</div>
-        <div class="value">from <strong>03‑06‑2024</strong> to <strong>03‑06‑2024</strong></div>
+        <div class="label">Receiving Location <strong>​:</strong>​</div>
+        <div class="value">
+          <span class="outlined">
+            9th Floor, Prestige TMS Square, NH66, Opp. Oberon Mall,<br>
+            Edappally, Kochi 682024
+          </span>
+        </div>
       </div>
       <div class="row">
-        <div class="label">Received Weight/Qty :</div>
-        <div class="value"><strong>kg</strong> 32.5   <strong>Qty.</strong> 13   <strong>Status:</strong> Destruction process completed successfully</div>
+        <div class="label">Received During<strong>​:</strong>​</div>
+        <div class="value">
+          from <span class="outlined">03‑06‑2024</span> to <span class="outlined">03‑06‑2024</span>
+        </div>
       </div>
       <div class="row">
-        <div class="label">Procedure Method :</div>
-        <div class="value">☒ Data Sanitization   ☑ Product Shred   ☑ Dismantling   ☑ Recycling   ☒ Refurbished</div>
+        <div class="label">Received Weight/Qty<strong>​:</strong>​</div>
+        <div class="value">
+          <span class="outlined"><strong>kg</strong> 32.5</span>
+          <span class="outlined"><strong>Qty.</strong> 13</span>
+          <span class="outlined"><strong>Status:</strong> Destruction process completed successfully</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label">Procedure Method<strong>​:</strong>​</div>
+        <div class="value">
+          ☒ Data Sanitization   ☑ Product Shred   ☑ Dismantling   ☑ Recycling   ☒ Refurbished
+        </div>
       </div>
     </div>
 
@@ -256,15 +273,15 @@
     <div class="charts">
       <div class="chart-box">
         <canvas id="chartProject"></canvas>
-        <div class="title">During this Project:<br><strong>1.195 MT E‑WASTE</strong></div>
+        <div class="title">During this Project:<br><strong>1.195&nbsp;MT E‑WASTE</strong></div>
       </div>
       <div class="chart-box">
         <canvas id="chartFY"></canvas>
-        <div class="title">During this F.Y.:<br><strong>89.251 MT E‑WASTE</strong></div>
+        <div class="title">During this F.Y.:<br><strong>89.251&nbsp;MT E‑WASTE</strong></div>
       </div>
       <div class="chart-box">
         <canvas id="chartTotal"></canvas>
-        <div class="title">Total Recycled As on Date:<br><strong>140.296 MT E‑WASTE</strong></div>
+        <div class="title">Total Recycled As on Date:<br><strong>140.296&nbsp;MT E‑WASTE</strong></div>
       </div>
     </div>
 
@@ -292,8 +309,8 @@
     </div>
 
     <div class="footer">
-      Binbay Recycling Pvt. Ltd. | 310, Sangeet Plaza, Marol Maroshi Road, Andheri (E), Mumbai – 400059 | 
-      CIN: U37100MH2016PTC288322 | Reg. No: 80/MPCB/RHQ/HT/CE/B-19040038 | Mob: +91‑98190‑19091 | www.binbay.com
+      Binbay Recycling Pvt. Ltd.&nbsp;|&nbsp;310, Sangeet Plaza, Marol Maroshi Road, Andheri (E), Mumbai&nbsp;–&nbsp;400059&nbsp;|&nbsp;
+      CIN:&nbsp;U37100MH2016PTC288322&nbsp;|&nbsp;Reg.&nbsp;No:&nbsp;80/MPCB/RHQ/HT/CE/B-19040038&nbsp;|&nbsp;Mob:&nbsp;+91‑98190‑19091&nbsp;|&nbsp;www.binbay.com
     </div>
   </div>
 
@@ -321,11 +338,17 @@
           font: { weight: 'bold', size: 10 },
           formatter: (value, ctx) => {
             const label = ctx.chart.data.labels[ctx.dataIndex];
-            return `${label}\n${value} MT`;
+            return `${label}\n${value} MT`;
           },
-          anchor: 'end', align: 'start', offset: 40, clamp: false,
-          backgroundColor: '#fff', borderColor: '#000',
-          borderWidth: 1, borderRadius: 4, padding: 3
+          anchor: 'end',
+          align: 'start',
+          offset: 40,
+          clamp: false,
+          backgroundColor: '#fff',
+          borderColor: '#000',
+          borderWidth: 1,
+          borderRadius: 4,
+          padding: 3
         }
       },
       cutout: '65%'
@@ -356,7 +379,10 @@
       },
       options: {
         ...baseOptions,
-        plugins: { ...baseOptions.plugins, centerText: { text: '1.195 MT E‑WASTE', font: 'bold 11px Arial', color: '#333' } }
+        plugins: {
+          ...baseOptions.plugins,
+          centerText: { text: '1.195 MT E‑WASTE', font: 'bold 11px Arial', color: '#333' }
+        }
       },
       plugins: [centerTextPlugin]
     });
@@ -369,7 +395,10 @@
       },
       options: {
         ...baseOptions,
-        plugins: { ...baseOptions.plugins, centerText: { text: '89.251 MT E‑WASTE', font: 'bold 11px Arial', color: '#333' } }
+        plugins: {
+          ...baseOptions.plugins,
+          centerText: { text: '89.251 MT E‑WASTE', font: 'bold 11px Arial', color: '#333' }
+        }
       },
       plugins: [centerTextPlugin]
     });
@@ -382,7 +411,10 @@
       },
       options: {
         ...baseOptions,
-        plugins: { ...baseOptions.plugins, centerText: { text: '140.296 MT E‑WASTE', font: 'bold 10px Arial', color: '#333' } }
+        plugins: {
+          ...baseOptions.plugins,
+          centerText: { text: '140.296 MT E‑WASTE', font: 'bold 10px Arial', color: '#333' }
+        }
       },
       plugins: [centerTextPlugin]
     });
