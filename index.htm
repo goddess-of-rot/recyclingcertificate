@@ -21,18 +21,17 @@
     }
     .page {
       width: 100%;
-      max-width: 325mm;  /* A4 landscape width + some margin */
+      max-width: 325mm;
       height: 100%;
       max-height: 275mm;
       margin: auto;
       padding: 30mm 20mm;
-      background-image: url('BORDER.jpg'); /* Your border image here */
+      background-image: url('BORDER.jpg');
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
       box-sizing: border-box;
     }
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -54,7 +53,6 @@
       padding: 4px 8px;
       font-size: 12px;
     }
-    /* SUBTITLE */
     .sub-row {
       display: flex;
       align-items: center;
@@ -75,7 +73,6 @@
       font-size: 12px;
       font-weight: bold;
     }
-    /* RECEIVED SECTION */
     .received {
       font-size: 12px;
       margin-bottom: 10px;
@@ -84,7 +81,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 8px;
-      gap: 350px; /* gap between label and value */
+      gap: 350px;
     }
     .received .label {
       width: 180px;
@@ -94,25 +91,21 @@
     .received .value {
       flex: 1;
     }
-    /* Outlined boxes for specific values */
     .outlined {
       border: 1px solid #333;
       padding: 3px 6px;
       display: inline-block;
       text-align: center;
     }
-    /* Adjust a bit for boxes that might need extra width (if desired) */
     .outlined.small {
       min-width: 80px;
     }
-    /* SUMMARY HEADING */
     .summary-heading {
       text-align: center;
       font-size: 14px;
       text-decoration: underline;
       margin: 12px 0;
     }
-    /* CHARTS */
     .charts {
       display: flex;
       justify-content: space-between;
@@ -132,13 +125,11 @@
       margin-top: 4px;
       line-height: 1.2;
     }
-    /* WEEE Paragraph */
     .weee {
       font-size: 12px;
       line-height: 1.4;
       margin-bottom: 12px;
     }
-    /* BOTTOM ROW */
     .bottom-row {
       display: flex;
       justify-content: center;
@@ -155,7 +146,6 @@
     .sign-img {
       height: 50px;
     }
-    /* FOOTER */
     .footer {
       text-align: center;
       font-size: 10px;
@@ -194,13 +184,11 @@
 </head>
 <body>
   <div class="page">
-    <!-- HEADER -->
     <div class="header">
       <div class="title-box">Certificate of Recycling</div>
       <div class="rn-box">R/N: EQ0624KL040MF6040</div>
     </div>
 
-    <!-- SUBTITLE -->
     <div class="sub-row">
       <div class="ref-label">Ref/No: EQ0624KL040MF6040</div>
       <div class="subtitle-box">
@@ -208,7 +196,6 @@
       </div>
     </div>
 
-    <!-- RECEIVED SECTION -->
     <div class="received">
       <div class="row">
         <div class="label">Received From :</div>
@@ -247,12 +234,10 @@
       </div>
     </div>
 
-    <!-- SUMMARY HEADING -->
     <div class="summary-heading">
       E‑Waste Recycling &amp; Data Sanitization Summary
     </div>
 
-    <!-- CHARTS -->
     <div class="charts">
       <div class="chart-box">
         <canvas id="chartProject"></canvas>
@@ -277,7 +262,6 @@
       </div>
     </div>
 
-    <!-- INFORMATION TEXT -->
     <div class="weee">
       The above‑mentioned WEEE has been received by Binbay Recycling Pvt. Ltd. and is recycled for maximum material recovery 
       and the Storage media has been sanitized according to the industry standards, local regulations and Pollution Control Board norms. 
@@ -285,7 +269,6 @@
       This certificate is for information and records only.
     </div>
 
-    <!-- BOTTOM ROW (LOGOS, STAMP, SIGNATURE) -->
     <div class="bottom-row">
       <img src="EPR.png" alt="EPR Logo">
       <img src="LiFE.png" alt="LiFE Logo">
@@ -302,14 +285,12 @@
       </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
       Binbay Recycling Pvt. Ltd.&nbsp;|&nbsp;310, Sangeet Plaza, Marol Maroshi Road, Andheri (E), Mumbai&nbsp;–&nbsp;400059&nbsp;|&nbsp;
       CIN:&nbsp;U37100MH2016PTC288322&nbsp;|&nbsp;Reg.&nbsp;No:&nbsp;80/MPCB/RHQ/HT/CE/B-19040038&nbsp;|&nbsp;Mob:&nbsp;+91‑98190‑19091&nbsp;|&nbsp;www.binbay.com
     </div>
   </div>
 
-  <!-- CHART SCRIPTS -->
   <script>
     const centerTextPlugin = {
       id: 'centerText',
